@@ -1,0 +1,39 @@
+import 'package:dio/dio.dart';
+import 'package:get/get.dart';
+import 'package:plant_online_store/app/data/models/plant/plant_model.dart';
+
+class HomeController extends GetxController {
+  //TODO: Implement HomeController
+
+  final count = 0.obs;
+  final data = const PlantModel().obs;
+  @override
+  void onInit() {
+    super.onInit();
+    getdata();
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+  }
+
+  void increment() => count.value++;
+
+  void getdata() async {
+    try {
+      final dio = Dio();
+      final response = await dio.get("https://perenual.com/api/species-list?key=sk-91Qm65d6ffdc6ba704310");
+      final json = response.data as Map<String, dynamic>;
+
+      data.value = PlantModel.fromJson(json);
+    } catch (e) {
+      print('Error occurred: $e');
+    }
+  }
+}
