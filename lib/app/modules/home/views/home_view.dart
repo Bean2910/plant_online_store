@@ -67,64 +67,66 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ],
               ),
-              Expanded(
-                child: Obx(
-                      () =>
-                      ListView.separated(
-                        itemCount: controller.data.value.data?.length ?? 0,
-                        padding: EdgeInsets.only(left: 5, right: 5),
-                        separatorBuilder: (context, index) =>
-                            SizedBox(
-                              width: 5,
-                            ),
-                        itemBuilder: (context, index) {
-                          final item = controller.data.value.data?[index] ?? const Datum();
-                          String concatenatedNames = item.otherName?.map((e) => e ?? '').join(', ') ?? '';
-                          return Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                ListTile(
-                                  title: Text(
-                                    item.commonName ?? '',
-                                    style: TextStyle(
-                                      color: Color(0xff0C9B16),
-                                      fontSize: 12.5,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  subtitle: Text(item.commonName ?? ''),
-                                  onTap: () {
-                                    print(item.id);
-                                     //Get.to(DetailPlantView(), arguments:item.id );
-                                    // Get.to(()=>DetailPlantView(),arguments: item.id);
-                                    Get.toNamed(Routes.DETAIL_PLANT,arguments: item.id);
-                                  },
+              Obx(
+                () => Container(
+                  height: 360,
+                  color: Colors.blue,
+                  child: ListView.separated(
+                    itemCount: controller.data.value.data?.length ?? 0,
+                    scrollDirection: Axis.horizontal,
+                    padding: EdgeInsets.only(left: 5, right: 5),
+                    separatorBuilder: (context, index) => SizedBox(
+                      width: 5,
+                    ),
+                    itemBuilder: (context, index) {
+                      final item = controller.data.value.data?[index] ?? const Datum();
+                      String concatenatedNames = item.otherName?.map((e) => e ?? '').join(', ') ?? '';
+                      return Container(
+                        color: Colors.deepOrange,
+                        constraints: BoxConstraints(
+                          maxWidth: 240,
+                          maxHeight: 360,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            if (item.defaultImage?.originalUrl != null)
+                              Image.network(
+                                item.defaultImage?.originalUrl.toString() ?? '',
+                                width: 240,
+                                height: 240,
+                                fit: BoxFit.cover,
+                              ),
+                            ListTile(
+                              title: Text(
+                                item.commonName ?? '',
+                                style: TextStyle(
+                                  color: Color(0xff0C9B16),
+                                  fontSize: 12.5,
+                                  fontWeight: FontWeight.w600,
                                 ),
-                                // Expanded(
-                                //   child: ListView.builder(
-                                //     itemCount: item.otherName?.length,
-                                //     itemBuilder: (context, subIndex) {
-                                //       final itemOtherName = item.otherName?[subIndex];
-                                //       return ListTile(
-                                //         title: Text(itemOtherName ?? ''),
-                                //       );
-                                //     },
-                                //   ),
-                                // ),
-                                if (concatenatedNames.isNotEmpty)
-                                  Text(
-                                    concatenatedNames,
-                                    style: TextStyle(
-                                      fontSize: 12.0,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                              ],
+                              ),
+                              subtitle: Text(item.commonName ?? ''),
+                              onTap: () {
+                                print(item.id);
+                                //Get.to(DetailPlantView(), arguments:item.id );
+                                // Get.to(()=>DetailPlantView(),arguments: item.id);
+                                Get.toNamed(Routes.DETAIL_PLANT, arguments: item.id);
+                              },
                             ),
-                          );
-                        },
-                      ),
+                            // if (concatenatedNames.isNotEmpty)
+                            //   Text(
+                            //     concatenatedNames,
+                            //     style: TextStyle(
+                            //       fontSize: 12.0,
+                            //       color: Colors.black,
+                            //     ),
+                            //   ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
               Row(

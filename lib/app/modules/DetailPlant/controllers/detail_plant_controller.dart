@@ -35,6 +35,7 @@ class DetailPlantController extends GetxController {
     super.onClose();
   }
 
+
   void increment() => count.value++;
   void getdatadetail() async {
     try {

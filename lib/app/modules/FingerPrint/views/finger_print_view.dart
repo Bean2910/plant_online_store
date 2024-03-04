@@ -11,6 +11,9 @@ class FingerPrintView extends GetView<FingerPrintController> {
 
   @override
   Widget build(BuildContext context) {
+    Future<void>.delayed(Duration(seconds: 2), () {
+      Get.toNamed(Routes.HOME);
+    });
     return Scaffold(
       appBar: AppBar(
         title: const Text('FingerPrintView'),
@@ -25,13 +28,7 @@ class FingerPrintView extends GetView<FingerPrintController> {
                 height: 116,
               ),
               Text('Add a fingerprint to make your account more secure.'),
-              Container(
-                
-                  width: 200,
-                  height: 200,
-                  child: Assets.images.finger.svg()
-
-              ),
+              Container(width: 200, height: 200, child: Assets.images.finger.svg()),
               Container(
                 padding: EdgeInsets.symmetric(vertical: 76),
                 height: 60,
