@@ -1357,6 +1357,10 @@ class $AssetsImagesGen {
   AssetGenImage get letyouin =>
       const AssetGenImage('assets/images/letyouin.png');
 
+  /// File path: assets/images/notfound.png
+  AssetGenImage get notfound =>
+      const AssetGenImage('assets/images/notfound.png');
+
   /// List of all assets
   List<dynamic> get values => [
         card1,
@@ -1405,7 +1409,8 @@ class $AssetsImagesGen {
         fb,
         finger,
         google,
-        letyouin
+        letyouin,
+        notfound
       ];
 }
 

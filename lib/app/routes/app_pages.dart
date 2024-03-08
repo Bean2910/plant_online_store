@@ -10,6 +10,8 @@ import '../modules/Pin/bindings/pin_binding.dart';
 import '../modules/Pin/views/pin_view.dart';
 import '../modules/Profile/bindings/profile_binding.dart';
 import '../modules/Profile/views/profile_view.dart';
+import '../modules/SearchScreen/bindings/search_screen_binding.dart';
+import '../modules/SearchScreen/views/search_screen_view.dart';
 import '../modules/SignIn/bindings/sign_in_binding.dart';
 import '../modules/SignIn/views/sign_in_view.dart';
 import '../modules/SignUp/bindings/sign_up_binding.dart';
@@ -28,8 +30,8 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  //static const INITIAL = Routes.HOME;
-  static const INITIAL = Routes.WELCOM_SCREEN;
+  static const INITIAL = Routes.HOME;
+  //static const INITIAL = Routes.WELCOM_SCREEN;
 
   static final routes = [
     GetPage(
@@ -84,8 +86,13 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.DETAIL_PLANT,
-      page: () =>  DetailPlantView(),
+      page: () => DetailPlantView(),
       binding: DetailPlantBinding(),
+    ),
+    GetPage(
+      name: _Paths.SEARCH_SCREEN,
+      page: () =>  SearchScreenView(),
+      binding: SearchScreenBinding(),
     ),
   ];
 }
