@@ -13,11 +13,10 @@ class SearchScreenController extends GetxController {
   var itemserch = ''.obs;
   var item_value = ''.obs;
   var dataList = [].obs;
+  var check_data=0.obs;
   @override
   void onInit() {
-    super.onInit();
-    print(itemserch);
-    // searchdata();
+    super.onInit(); // searchdata();
     GetStorage box = GetStorage();
     if (box.hasData('textList')) {
       dataList = (box.read<List>('textList') ?? []).obs;
@@ -28,9 +27,9 @@ class SearchScreenController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    itemserch.stream.debounce((_) => TimerStream(true, const Duration(milliseconds: 800))).listen((event) {
-      addText(itemserch.toString());
-      //searchdata();
+    itemserch.stream.debounce((_) => TimerStream(true, const Duration(milliseconds: 2000))).listen((event) {
+      //addText(itemserch.toString());
+      searchdata();
     });
 
   }
@@ -44,14 +43,12 @@ class SearchScreenController extends GetxController {
   void increment() => count.value++;
 
   void searchdata() async {
-    try {
+
       final dio = Dio();
       final response = await dio.get("https://perenual.com/api/species-list?key=sk-91Qm65d6ffdc6ba704310&q=$itemserch");
       final json = response.data as Map<String, dynamic>;
       data2.value = PlantModel.fromJson(json);
-    } catch (e) {
-      print('Error occurred: $e');
-    }
+
   }
 
   void addText(String text) {

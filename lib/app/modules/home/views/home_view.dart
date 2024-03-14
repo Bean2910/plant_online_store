@@ -6,6 +6,7 @@ import 'package:plant_online_store/app/routes/app_pages.dart';
 import 'package:plant_online_store/gen/assets.gen.dart';
 
 import '../controllers/home_controller.dart';
+import '../widget_custom/Listview_custom_1.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
@@ -54,11 +55,41 @@ class HomeView extends GetView<HomeController> {
                 TextFormField(
                   decoration: InputDecoration(
                     prefixIcon: GestureDetector(
-                        onTap:() {
+                        onTap: () {
                           Get.toNamed(Routes.SEARCH_SCREEN);
                         },
                         child: Assets.iconsLight.search.svg()),
-                    suffixIcon: Assets.iconsLight.filter.svg(),
+                    suffixIcon: GestureDetector(
+                      onTap: () {
+                        Get.bottomSheet(
+                            Container(
+                              width: 350,
+                              height: 350,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Colors.greenAccent,
+                              ),
+                              child: Column(
+                                children: [
+                                  Obx(
+                                    () => Slider(
+                                      min: 0,
+                                      max: 100,
+                                      value: controller.sliderValue.value,
+                                      onChanged: (value) {
+                                        controller.updateSliderValue(value);
+                                        print(value);
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            //barrierColor: Colors.transparent, // Đặt màu barrier trong zs
+                            elevation: 0);
+                      },
+                      child: Assets.iconsLight.filter.svg(),
+                    ),
                   ),
                 ),
                 Row(
@@ -130,6 +161,7 @@ class HomeView extends GetView<HomeController> {
                     ),
                   ),
                 ),
+                listview_custom_1(),
                 Row(
                   children: [
                     Expanded(child: Text('Most Popular')),

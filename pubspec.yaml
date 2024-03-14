@@ -28,6 +28,7 @@ dev_dependencies:
   flutter_svg: ^2.0.9
   freezed: ^2.4.7
   json_serializable: ^6.7.1
+  analyzer: ^5.11.1
 
 flutter: 
   uses-material-design: true
