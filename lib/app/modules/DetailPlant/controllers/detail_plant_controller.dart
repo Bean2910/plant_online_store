@@ -27,7 +27,7 @@ class DetailPlantController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    //getdatadetail();
+    getdatadetail();
   }
 
   @override

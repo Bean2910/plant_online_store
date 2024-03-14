@@ -28,7 +28,7 @@ class SearchScreenController extends GetxController {
   void onReady() {
     super.onReady();
     itemserch.stream.debounce((_) => TimerStream(true, const Duration(milliseconds: 2000))).listen((event) {
-      //addText(itemserch.toString());
+      addText(itemserch.toString());
       searchdata();
     });
 
