@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../routes/app_pages.dart';
@@ -23,7 +22,7 @@ class ListviewCustom1 extends StatelessWidget {
         ),
         itemBuilder: (context, index) {
           final item = data?[index] ?? const home_model.Datum();
-          String concatenatedNames = item.otherName?.map((e) => e ?? '').join(', ') ?? '';
+          //String concatenatedNames = item.otherName?.map((e) => e ?? '').join(', ') ?? '';
           return Container(
             //color: Colors.deepOrange,
             width: 240,

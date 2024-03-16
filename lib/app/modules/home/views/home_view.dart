@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:plant_online_store/app/data/models/plant/plant_model.dart';
 import 'package:plant_online_store/app/modules/home/widget_custom/Gridview_custom_1.dart';
 import 'package:plant_online_store/app/routes/app_pages.dart';
 import 'package:plant_online_store/gen/assets.gen.dart';
