@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:plant_online_store/app/modules/home/widget_custom/Gridview_custom_1.dart';
+import 'package:plant_online_store/app/modules/home/widget_custom/SearchFilterCategoriesState.dart';
 import 'package:plant_online_store/app/routes/app_pages.dart';
 import 'package:plant_online_store/gen/assets.gen.dart';
 
 import '../controllers/home_controller.dart';
 import '../widget_custom/Listview_custom_1.dart';
+import '../widget_custom/Slider_Custom_1.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
@@ -63,23 +65,20 @@ class HomeView extends GetView<HomeController> {
                       onTap: () {
                         Get.bottomSheet(
                             Container(
-                              width: 350,
+                              width: 450,
                               height: 350,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
-                                color: Colors.greenAccent,
+                                color: Colors.white,
                               ),
                               child: Column(
                                 children: [
-                                  Obx(
-                                    () => Slider(
-                                      min: 0,
-                                      max: 100,
-                                      value: controller.sliderValue.value,
-                                      onChanged: (value) {
-                                        controller.updateSliderValue(value);
-                                      },
-                                    ),
+                                  SearchFilterCategories(
+                                    categories: controller.categories,
+                                    selectedCategories: controller.selectedCategories,
+                                  ),
+                                  SliderCustom1(
+                                    controller: controller,
                                   ),
                                 ],
                               ),
@@ -114,9 +113,9 @@ class HomeView extends GetView<HomeController> {
                     ),
                   ],
                 ),
-                Obx(
-                  () => GridviewCustom1(data:controller.data.value.data ,)
-                ),
+                Obx(() => GridviewCustom1(
+                      data: controller.data.value.data,
+                    )),
               ],
             ),
           ),

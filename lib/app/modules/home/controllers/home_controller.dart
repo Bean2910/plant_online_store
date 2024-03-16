@@ -7,6 +7,8 @@ class HomeController extends GetxController {
 
   final count = 0.obs;
   final data = const PlantModel().obs;
+  List <String> categories=['All','Cactus','Sansevieria','Palm'];
+  List <String> selectedCategories=[];
   @override
   void onInit() {
     super.onInit();
@@ -40,5 +42,13 @@ class HomeController extends GetxController {
 
   void updateSliderValue(double value) {
     sliderValue.value = value;
+  }
+  final RxDouble rxLowerValue = 0.0.obs;
+  final RxDouble rxUpperValue = 50.0.obs;
+
+  void updateRangeValues(double lowerValue, double upperValue) {
+    rxLowerValue.value = lowerValue;
+    rxUpperValue.value = upperValue;
+    update();
   }
 }
