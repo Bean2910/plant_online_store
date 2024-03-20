@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:plant_online_store/app/data/models/plant/plant_model.dart';
 
 class HomeController extends GetxController {
@@ -7,12 +8,12 @@ class HomeController extends GetxController {
 
   final count = 0.obs;
   final data = const PlantModel().obs;
-  List <String> categories=['All','Cactus','Sansevieria','Palm'];
+  List <String> categories=['All','Cactus','Sansevieria','Palm','Sansevieria2','Palm2'];
   List <String> selectedCategories=[];
   @override
   void onInit() {
     super.onInit();
-    getdata();
+    //getdata();
   }
 
   @override
@@ -50,5 +51,16 @@ class HomeController extends GetxController {
     rxLowerValue.value = lowerValue;
     rxUpperValue.value = upperValue;
     update();
+  }
+  void toggleCategory(String category) {
+    if (selectedCategories.contains(category)) {
+      selectedCategories.remove(category);
+    } else {
+      selectedCategories.add(category);
+    }
+    update();
+  }
+  bool isCategorySelected(String category) {
+    return selectedCategories.contains(category);
   }
 }
