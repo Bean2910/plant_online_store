@@ -62,56 +62,51 @@ class SearchScreenView extends GetView<SearchScreenController> {
                 ),
               ],
             ),
-            Obx(
-              () => controller.check_data == 0
-                  ? Column(
-                      children: [
-                        Container(
-                          child: Assets.images.notfound.image(width: 360, height: 200),
-                        ),
-                        Text(
-                          'Not found',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text('Sorry, the keyword you entered cannot be found, please check again or search with another keyword.'),
-                      ],
-                    )
-                  : Obx(
-                      () => Container(
-                        height: 250,
-                        child: GridView.count(
-                          crossAxisCount: 2,
-                          children: List.generate(controller.data2.value.data?.length ?? 0, (index) {
-                            final item = controller.data2.value.data?[index] ?? const Datum();
-                            return Container(
-                              margin: EdgeInsets.all(8),
-                              color: Colors.blueGrey[100],
-                              child: Center(
-                                child: Column(
-                                  children: [
-                                    Expanded(
-                                      child: Image.network(
-                                        item.defaultImage?.originalUrl.toString() ?? '',
-                                        width: 50,
-                                        height: 50,
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Text(
-                                        item.commonName.toString(),
-                                      ),
-                                    ),
-                                  ],
+            Obx(() => controller.check_data.value != 0 ? Container(
+                  height: 250,
+                  child: GridView.count(
+                    crossAxisCount: 2,
+                    children: List.generate(controller.data2.value.data?.length ?? 0, (index) {
+                      final item = controller.data2.value.data?[index] ?? const Datum();
+                      return Container(
+                        margin: EdgeInsets.all(8),
+                        color: Colors.blueGrey[100],
+                        child: Center(
+                          child: Column(
+                            children: [
+                              Expanded(
+                                child: Image.network(
+                                  item.defaultImage?.originalUrl.toString() ?? '',
+                                  width: 50,
+                                  height: 50,
                                 ),
                               ),
-                            );
-                          }),
+                              Expanded(
+                                child: Text(
+                                  item.commonName.toString(),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ),
-            ),
+                      );
+                    }),
+                  ),
+                ) : Column(
+              children: [
+                Container(
+                  child: Assets.images.notfound.image(width: 360, height: 200),
+                ),
+                Text(
+                  'Not found',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text('Sorry, the keyword you entered cannot be found, please check again or search with another keyword.'),
+              ],
+            ),),
+
             Divider(
               // This is the Divider widget
               height: 20,

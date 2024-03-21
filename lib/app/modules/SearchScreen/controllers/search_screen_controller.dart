@@ -1,6 +1,9 @@
+import 'dart:ffi';
+
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:pinput/pinput.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../../../data/models/plant/plant_model.dart';
@@ -13,25 +16,25 @@ class SearchScreenController extends GetxController {
   var itemserch = ''.obs;
   var item_value = ''.obs;
   var dataList = [].obs;
-  var check_data=0.obs;
+  var check_data = 1.obs;
+
   @override
   void onInit() {
-    super.onInit(); // searchdata();
+    super.onInit();
+    searchdata();
     GetStorage box = GetStorage();
     if (box.hasData('textList')) {
       dataList = (box.read<List>('textList') ?? []).obs;
     }
   }
 
-
   @override
   void onReady() {
     super.onReady();
-    itemserch.stream.debounce((_) => TimerStream(true, const Duration(milliseconds: 2000))).listen((event) {
+    itemserch.stream.debounce((_) => TimerStream(true, const Duration(milliseconds: 500))).listen((event) {
       addText(itemserch.toString());
       searchdata();
     });
-
   }
 
   @override
@@ -43,12 +46,11 @@ class SearchScreenController extends GetxController {
   void increment() => count.value++;
 
   void searchdata() async {
-
-      final dio = Dio();
-      final response = await dio.get("https://perenual.com/api/species-list?key=sk-91Qm65d6ffdc6ba704310&q=$itemserch");
-      final json = response.data as Map<String, dynamic>;
-      data2.value = PlantModel.fromJson(json);
-
+    final dio = Dio();
+    final response = await dio.get("https://perenual.com/api/species-list?key=sk-91Qm65d6ffdc6ba704310&q=$itemserch");
+    final json = response.data as Map<String, dynamic>;
+    data2.value = PlantModel.fromJson(json);
+    check_data.value =data2.value.total ?? 0   ;
   }
 
   void addText(String text) {
