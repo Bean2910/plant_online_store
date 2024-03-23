@@ -5,7 +5,6 @@ import 'package:plant_online_store/app/data/models/plant/plant_model.dart';
 import 'app/routes/app_pages.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
-import 'network/test_api.dart';
 
 
 Future<void> main() async {

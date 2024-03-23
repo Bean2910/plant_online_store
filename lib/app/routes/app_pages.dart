@@ -6,6 +6,8 @@ import '../modules/FingerPrint/bindings/finger_print_binding.dart';
 import '../modules/FingerPrint/views/finger_print_view.dart';
 import '../modules/LetsYouIn/bindings/lets_you_in_binding.dart';
 import '../modules/LetsYouIn/views/lets_you_in_view.dart';
+import '../modules/Master/bindings/master_binding.dart';
+import '../modules/Master/views/master_view.dart';
 import '../modules/Pin/bindings/pin_binding.dart';
 import '../modules/Pin/views/pin_view.dart';
 import '../modules/Profile/bindings/profile_binding.dart';
@@ -30,7 +32,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.MASTER;
   //static const INITIAL = Routes.WELCOM_SCREEN;
 
   static final routes = [
@@ -91,8 +93,13 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.SEARCH_SCREEN,
-      page: () =>  SearchScreenView(),
+      page: () => SearchScreenView(),
       binding: SearchScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.MASTER,
+      page: () => const MasterView(),
+      binding: MasterBinding(),
     ),
   ];
 }

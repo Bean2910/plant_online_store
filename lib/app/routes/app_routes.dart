@@ -15,6 +15,7 @@ abstract class Routes {
   static const FINGER_PRINT = _Paths.FINGER_PRINT;
   static const DETAIL_PLANT = _Paths.DETAIL_PLANT;
   static const SEARCH_SCREEN = _Paths.SEARCH_SCREEN;
+  static const MASTER = _Paths.MASTER;
 }
 
 abstract class _Paths {
@@ -31,4 +32,5 @@ abstract class _Paths {
   static const FINGER_PRINT = '/finger-print';
   static const DETAIL_PLANT = '/detail-plant';
   static const SEARCH_SCREEN = '/search-screen';
+  static const MASTER = '/master';
 }

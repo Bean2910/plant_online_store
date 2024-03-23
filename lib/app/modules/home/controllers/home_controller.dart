@@ -8,56 +8,7 @@ class HomeController extends GetxController {
 
   final count = 0.obs;
   final data = const PlantModel().obs;
-  List <String> categories=['All','Cactus','Sansevieria','Palm','Sansevieria2','Palm2'];
-  var selectedFilters = <String>[].obs;
-  var allSelected = false.obs;
-  void toggleFilter(String filter) {
-    // if (filter == 'All') {
-    //   if (allSelected.value) {
-    //     selectedFilters.clear();
-    //     allSelected.value = false;
-    //   } else {
-    //     selectedFilters.clear();
-    //     selectedFilters.addAll(categories);
-    //     allSelected.value = true;
-    //   }
-    // } else {
-    //   if (selectedFilters.contains('All')) {
-    //     selectedFilters.remove('All');
-    //     allSelected.value = false;
-    //   }
-    //
-    //   if (selectedFilters.contains(filter)) {
-    //     selectedFilters.remove(filter);
-    //   } else {
-    //     selectedFilters.add(filter);
-    //   }
-    // }
-    if (filter == 'All') {
-      if (selectedFilters.contains('All')) {
-        selectedFilters.clear();
-      } else {
-        selectedFilters.addAll(categories);
-      }
-    } else {
-      if (selectedFilters.contains('All')) {
-        selectedFilters.remove('All');
-      }
-      if (selectedFilters.contains(filter)) {
-        selectedFilters.remove(filter);
-      } else {
-        selectedFilters.add(filter);
-      }
-      bool allOptionsSelected = categories.sublist(1).every((option) => selectedFilters.contains(option));
 
-      // Update selection based on allOptionsSelected
-      if (allOptionsSelected) {
-        selectedFilters.add('All');
-      } else {
-        selectedFilters.remove('All');
-      }
-    }
-  }
   @override
   void onInit() {
     super.onInit();

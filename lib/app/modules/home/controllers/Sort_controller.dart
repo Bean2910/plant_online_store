@@ -7,7 +7,7 @@ import 'package:plant_online_store/app/modules/home/controllers/home_controller.
 final class Sort_controller extends HomeController {
   //TODO: Implement HomeController
 
-  List <String> sort=['All','Cactus','Sansevieria','Palm','Sansevieria2','Palm2'];
+  List <String> sort=['Popular','Most Recent','Price High','Chip'];
   var selectedFilters = <String>[].obs;
   var allSelected = false.obs;
   void toggleFilter(String filter) {

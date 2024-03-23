@@ -7,7 +7,7 @@ import 'package:plant_online_store/app/modules/home/controllers/home_controller.
 final class Rating_controller extends HomeController {
   //TODO: Implement HomeController
 
-  List <String> rating=['All','Cactus','Sansevieria','Palm','Sansevieria2','Palm2'];
+  List <String> rating=['All','5','4','3','2','1'];
   var selectedFilters = <String>[].obs;
   var allSelected = false.obs;
   void toggleFilter(String filter) {

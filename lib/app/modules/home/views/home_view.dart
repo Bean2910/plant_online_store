@@ -121,7 +121,7 @@ class HomeView extends GetView<HomeController> {
                                       () => SingleChildScrollView(
                                     scrollDirection: Axis.horizontal,
                                     child: Row(
-                                      children: sort_controller.categories.map((option) {
+                                      children: sort_controller.sort.map((option) {
                                         return Padding(
                                           padding: EdgeInsets.only(right: 8.0),
                                           child: FilterChipWidget(
@@ -144,7 +144,7 @@ class HomeView extends GetView<HomeController> {
                                       () => SingleChildScrollView(
                                     scrollDirection: Axis.horizontal,
                                     child: Row(
-                                      children: rating_controller.categories.map((option) {
+                                      children: rating_controller.rating.map((option) {
                                         return Padding(
                                           padding: EdgeInsets.only(right: 8.0),
                                           child: FilterChipWidget(
